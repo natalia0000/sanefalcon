@@ -1,7 +1,6 @@
-export SCRIPT_GETPRO=~/Workspace/sanefalcon/getProfile.py
-export SCRIPT_GETPROSUB=~/Workspace/sanefalcon/getProfileSubmit.sh
+export SCRIPT_GETPRO=/home/nzukova/SANEFALCON/Sanef/getProfile.py
 
-export SCRIPT_PYTHON=python
+export SCRIPT_PYTHON=python2
 
 export INDIR=`readlink -f $1`
 export NUCLDIR=`readlink -f $2`
@@ -13,5 +12,12 @@ for SAMPLE in `find $INDIR -name "*.1.start.fwd"`
 do
 	export SIMPLE=${SAMPLE//.1.start.fwd/}
 	export SIMPLER=`echo $SIMPLE | rev | cut -d"/" -f1 | rev`
-	qsub -t 1-22:1 -V $SCRIPT_GETPROSUB
+	for CHROM in $(seq 1 22 ) 
+	do
+		$SCRIPT_PYTHON $SCRIPT_GETPRO $NUCLDIR/nucl_ex3.$CHROM $SIMPLE.$CHROM.start.fwd 0 $OUTDIR/$SIMPLER.$CHROM.fwd 
+		$SCRIPT_PYTHON $SCRIPT_GETPRO $NUCLDIR/nucl_ex3.$CHROM $SIMPLE.$CHROM.start.rev 1 $OUTDIR/$SIMPLER.$CHROM.rev
+
+		$SCRIPT_PYTHON $SCRIPT_GETPRO $NUCLDIR/nucl_ex3.$CHROM $SIMPLE.$CHROM.start.fwd 1 $OUTDIR/$SIMPLER.$CHROM.ifwd 
+		$SCRIPT_PYTHON $SCRIPT_GETPRO $NUCLDIR/nucl_ex3.$CHROM $SIMPLE.$CHROM.start.rev 0 $OUTDIR/$SIMPLER.$CHROM.irev
+	done
 done
