@@ -24,11 +24,13 @@ Tools used from other projects are shown below. Note that several of the selecte
 - BWA
 - PicardTools
 - SamTools
-- Python  
+- Python 2 and 3
 --numpy  
 --scipy  
 --sklearn  
 --matplotlib  
+--csv
+--pandas
 
 ## 2 Preparation of samples
 
@@ -159,8 +161,9 @@ The following scripts will combine the read start profiles per direction:
 	> `./combProfI.sh searchDir >> downstreamProfs.csv`
 
 
-These scripts will use a built-in find function to detect profile files and merge them per upstream or downstream direction for each sample. At this point, I do not have a seperate script to combine the upstream and downstream profiles. Instead just open them in a spreadsheet tool, sort them both by file name so their orders are aligned and reverse the upstream profile (left most value must become rightmost etc), then stitch the two together by putting the downstream profiles after the upstream profiles. Note there is a value in the middle that has to be removed as both sides also take the nucleosome center base pair into account, thus providing this number twice. You should find the last number from the upstream matches the first number of the downstream profiles when putting them together. Just delete one of the two columns to get rid of this problem, then save the combined profiles in a new file (plain text/csv) for further analysis.
-The final result should contain the samplename in the first column, then followed by only read start counts per position in every column after that.
+~~These scripts will use a built-in find function to detect profile files and merge them per upstream or downstream direction for each sample. At this point, I do not have a seperate script to combine the upstream and downstream profiles. Instead just open them in a spreadsheet tool, sort them both by file name so their orders are aligned and reverse the upstream profile (left most value must become rightmost etc), then stitch the two together by putting the downstream profiles after the upstream profiles. Note there is a value in the middle that has to be removed as both sides also take the nucleosome center base pair into account, thus providing this number twice. You should find the last number from the upstream matches the first number of the downstream profiles when putting them together. Just delete one of the two columns to get rid of this problem, then save the combined profiles in a new file (plain text/csv) for further analysis.
+The final result should contain the samplename in the first column, then followed by only read start counts per position in every column after that.~~
+> python ./Nucleosome.py
 
 
 ### 3.4 Training the model
