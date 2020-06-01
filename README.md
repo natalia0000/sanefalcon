@@ -24,13 +24,12 @@ Tools used from other projects are shown below. Note that several of the selecte
 - BWA
 - PicardTools
 - SamTools
-- Python 2 and 3
---numpy  
---scipy  
---sklearn  
---matplotlib  
---csv
---pandas
+- Python 2 and 3 
+    + numpy  
+    + scipy  
+    + sklearn  
+    + matplotlib  
+    + pandas
 
 ## 2 Preparation of samples
 
