@@ -1,3 +1,14 @@
+"""
+Boys script can be used for finding path on Ott server to male samples
+and their fetal fraction which was calculated by bayindir (if it was calculated).
+"""
+"""
+pathtoboys.txt - path to samples which have known fetal fraction
+maybe_boys.txt - path to samples which have not known fetal fraction
+bayindir.txt - for known fetal fraction
+"""
+
+
 import os
 import csv
 
@@ -61,11 +72,6 @@ for el in boys_set:
     f.write(el + '\n')
 f.close()
 
-
-f = open('lineinbayindir.txt', 'w')
-for el in bayindir:
-    f.write(el + '\n')
-f.close()
 
 f = open('bayindir.txt', 'w')
 f.write(str(len(bayindir_boys)) + '\n')

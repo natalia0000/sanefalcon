@@ -1,3 +1,9 @@
+
+"""
+Nucleosome script can be used to combine upstreamProfs.csv and downstreamProfs.csv
+"""
+
+
 import pandas as pd
 import csv
 
