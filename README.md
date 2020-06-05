@@ -16,6 +16,9 @@ This document is meant to guide you using SANEFALCON. For information on the alg
 - In Bash, variables are accessed like this: `$VARIABLE`. You are expected to replace such occurrences in this README where needed, or assign values to them when you build your pipeline.
 - There are many `script.sh` files in this project. Most of them are partial implementations of the pipeline. Study them carefully if you whish to save some time.
 
+#### From Natalia:
+
+The paths in the bash scripts were changed, the quad was deleted, the getProfile.sh script was assembled and Nucleosome script added.
 
 ## 1 Tools and dependencies
 Tools used from other projects are shown below. Note that several of the selected software packages could be replaced by alternatives of your choice but were not tested. 
@@ -148,10 +151,13 @@ Arguments are:
  4. `$SAMPLEOUT.$CHROM.fwd/ifwd/rev/irev`: The output file for the determined profile. Save every output in a separate file, do not overwrite or combine yet.
  
 As an example, arguments are shown here as variables:  
-	> `python getProfile.py $NUCL.$CHROM $SAMPLE.$CHROM.start.fwd 0  $SAMPLEOUT.$CHROM.fwd`  
+	> `python getProfile.py $NUCL.$CHROM $SAMPLE.$CHROM.start.fwd 0  $SAMPLEOUT.$CHROM.fwd` 
 	> `python getProfile.py $NUCL.$CHROM $SAMPLE.$CHROM.start.fwd 1  $SAMPLEOUT.$CHROM.ifwd`  
 	> `python getProfile.py $NUCL.$CHROM $SAMPLE.$CHROM.start.rev 1  $SAMPLEOUT.$CHROM.rev`  
 	> `python getProfile.py $NUCL.$CHROM $SAMPLE.$CHROM.start.rev 0  $SAMPLEOUT.$CHROM.irev`  
+	
+or use
+    > `getProfile.py export $INDIR $NUCLDIR $OUTDIR`
  
 While this provides a profile per chromosome, per direction, per sample, we only want a single profile per sample. To do this, we will combine all downstream profiles over all chromosomes per sample in one array and all upstream profiles per sample in another, then merge the two together to create a full length read start profile that covers the whole region surrounding nucleosome positions.
  
@@ -163,6 +169,8 @@ The following scripts will combine the read start profiles per direction:
 ~~These scripts will use a built-in find function to detect profile files and merge them per upstream or downstream direction for each sample. At this point, I do not have a seperate script to combine the upstream and downstream profiles. Instead just open them in a spreadsheet tool, sort them both by file name so their orders are aligned and reverse the upstream profile (left most value must become rightmost etc), then stitch the two together by putting the downstream profiles after the upstream profiles. Note there is a value in the middle that has to be removed as both sides also take the nucleosome center base pair into account, thus providing this number twice. You should find the last number from the upstream matches the first number of the downstream profiles when putting them together. Just delete one of the two columns to get rid of this problem, then save the combined profiles in a new file (plain text/csv) for further analysis.
 The final result should contain the samplename in the first column, then followed by only read start counts per position in every column after that.~~
 > python ./Nucleosome.py
+
+Nucleosome script can be used to combine upstreamProfs.csv and downstreamProfs.csv and and get streamProfs.csv.
 
 
 ### 3.4 Training the model
