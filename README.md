@@ -157,7 +157,8 @@ As an example, arguments are shown here as variables:
 	> `python getProfile.py $NUCL.$CHROM $SAMPLE.$CHROM.start.rev 0  $SAMPLEOUT.$CHROM.irev`  
 	
 or use
-    > `getProfile.py export $INDIR $NUCLDIR $OUTDIR`
+
+    > `getProfile.py $INDIR $NUCLDIR $OUTDIR`
  
 While this provides a profile per chromosome, per direction, per sample, we only want a single profile per sample. To do this, we will combine all downstream profiles over all chromosomes per sample in one array and all upstream profiles per sample in another, then merge the two together to create a full length read start profile that covers the whole region surrounding nucleosome positions.
  
