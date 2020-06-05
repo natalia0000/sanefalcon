@@ -16,9 +16,12 @@ This document is meant to guide you using SANEFALCON. For information on the alg
 - In Bash, variables are accessed like this: `$VARIABLE`. You are expected to replace such occurrences in this README where needed, or assign values to them when you build your pipeline.
 - There are many `script.sh` files in this project. Most of them are partial implementations of the pipeline. Study them carefully if you whish to save some time.
 
-#### From Natalia:
+#### Update 05.06.20 by Natalie Zhukova::
 
-The paths in the bash scripts were changed, the quad was deleted, the getProfile.sh script was assembled and Nucleosome script added.
+* the paths in the bash scripts were updated
+* the qsub was deleted
+* the getProfile.sh script was reassembled from two separate scripts
+* Nucleosome script added 
 
 ## 1 Tools and dependencies
 Tools used from other projects are shown below. Note that several of the selected software packages could be replaced by alternatives of your choice but were not tested. 
