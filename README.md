@@ -16,7 +16,7 @@ This document is meant to guide you using SANEFALCON. For information on the alg
 - In Bash, variables are accessed like this: `$VARIABLE`. You are expected to replace such occurrences in this README where needed, or assign values to them when you build your pipeline.
 - There are many `script.sh` files in this project. Most of them are partial implementations of the pipeline. Study them carefully if you whish to save some time.
 
-#### Update 05.06.20 by Natalie Zhukova::
+#### Update 05.06.20 by Natalie Zhukova:
 
 * the paths in the bash scripts were updated
 * the qsub was deleted
