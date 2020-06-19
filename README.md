@@ -23,6 +23,15 @@ This document is meant to guide you using SANEFALCON. For information on the alg
 * the getProfile.sh script was reassembled from two separate scripts
 * Nucleosome script added 
 
+For training, 202 samples of male pregnancies of extracellular dna were used, then training was only on 164 samples by separating only Streck tubes.
+Bam files were sent to the input, the output received a set of coefficients for the regression model.
+
+A negative result was obtained on 10 samples, but correlating with the fetal fraction on the Y chromosome with a coefficient = 0.896
+
+Vertically fetal fraction of the trained model, horizontally fetal fraction in Y
+
+![alt text](https://github.com/natalia0000/sanefalcon/blob/master/plot.jpg)
+
 ## 1 Tools and dependencies
 Tools used from other projects are shown below. Note that several of the selected software packages could be replaced by alternatives of your choice but were not tested. 
 
